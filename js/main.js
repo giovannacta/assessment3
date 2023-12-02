@@ -18,3 +18,19 @@ document.addEventListener('click', function () {
         });
 
 });
+
+window.addEventListener('load', function () {
+    document.getElementById('gmail-login')
+    document.addEventListener('click', function () {
+        
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('email');
+        firebase.auth().signInWithPopup(provider)
+            .then(function (result) {
+                console.log('Loging successfully', result.user);
+            })
+            .catch(function (error) {
+                console.log('login fail', error);
+            });
+    });
+});
